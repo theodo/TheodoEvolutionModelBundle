@@ -21,6 +21,15 @@ class Configuration implements ConfigurationInterface
 
         $rootNode = $treeBuilder->root('theodo_evolution_legacy_model');
 
+        $rootNode
+    		->children()
+        		->scalarNode('path')->isRequired()->end()
+    			->scalarNode('user')->defaultValue('root')->end()
+    			->scalarNode('password')->defaultNull()->end()
+    			->scalarNode('host')->defaultValue('localhost')->end()
+    			->scalarNode('dbname')->end()
+        	->end();
+
         return $treeBuilder;
     }
 }

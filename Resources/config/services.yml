@@ -1,0 +1,4 @@
+services:
+    theodo_evolution.legacy_model.doctrine1:
+        class: Theodo\Evolution\LegacyModelBundle\Service\Doctrine1Service
+        arguments: [@service_container]
