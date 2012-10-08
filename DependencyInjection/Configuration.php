@@ -33,6 +33,7 @@ class Configuration implements ConfigurationInterface
 	    				->children()
 	    					->scalarNode('path')->isRequired()->end()
 	    					->scalarNode('prefix')->defaultNull()->end()
+	    					->scalarNode('extension')->defaultNull()->end()
 	    				->end()
 	    			->end()
 	    		->end()

@@ -13,8 +13,7 @@ class Doctrine1Service {
         $config = $container->getParameter('theodo_evolution_legacy_model');
 
         $this->doctrineConnection($config);
-        $this->autoloadRepositories($autoloadService);
-
+        $this->autoloadRepositories($autoloadService, $config);
     }   
 
     public function doctrineConnection($config)
@@ -33,14 +32,18 @@ class Doctrine1Service {
         $manager = \Doctrine_Manager::getInstance();
     }
 
-    public function autoloadRepositories(AutoloadService $autoloadService)
+    public function autoloadRepositories(AutoloadService $autoloadService, $config)
     {
         $autoloadService->register('../legacy/lib/model/doctrine/');
         $autoloadService->register('../legacy/lib/vendor/symfony/plugins/sfDoctrinePlugin/lib/');
         $autoloadService->register('../legacy/lib/vendor/symfony/exception/');
 
         foreach ($config['autoload'] as $info) {
-            $autoloadService->register($info['path'], $info['prefix']);
+            $option = array(
+                'prefix' => $info['prefix'], 
+                'extension' => $info['extension']
+            );
+            $autoloadService->register($info['path'], $option);
         }        
     }
 }	
