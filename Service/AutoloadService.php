@@ -8,7 +8,6 @@ class AutoloadService {
         ($option['prefix'] === null) ? $prefix = '' : $prefix = $option['prefix'];
         ($option['extension'] === null) ? $extension = '.class.php' : $extension = $option['extension'];
 
-        echo $prefix . ' -> ' . $path . ' -> ' . $extension . '<br/>';
         spl_autoload_register(function ($class) use ($path, $prefix, $extension) {
             $rdi = new \RecursiveDirectoryIterator($path);
             foreach (new \RecursiveIteratorIterator($rdi) as $file => $meta)
@@ -21,6 +20,3 @@ class AutoloadService {
         });
     }
 }
-
-
-
