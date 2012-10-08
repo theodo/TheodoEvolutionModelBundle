@@ -1,4 +1,6 @@
 services:
+    theodo_evolution.legacy_model.autoload:
+        class: Theodo\Evolution\LegacyModelBundle\Service\AutoloadService
     theodo_evolution.legacy_model.doctrine1:
         class: Theodo\Evolution\LegacyModelBundle\Service\Doctrine1Service
-        arguments: [@service_container]
+        arguments: [@service_container, @theodo_evolution.legacy_model.autoload]

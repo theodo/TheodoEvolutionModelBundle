@@ -28,6 +28,14 @@ class Configuration implements ConfigurationInterface
     			->scalarNode('password')->defaultNull()->end()
     			->scalarNode('host')->defaultValue('localhost')->end()
     			->scalarNode('dbname')->end()
+    			->arrayNode('autoload')
+	    			->prototype('array')
+	    				->children()
+	    					->scalarNode('path')->isRequired()->end()
+	    					->scalarNode('prefix')->defaultNull()->end()
+	    				->end()
+	    			->end()
+	    		->end()
         	->end();
 
         return $treeBuilder;

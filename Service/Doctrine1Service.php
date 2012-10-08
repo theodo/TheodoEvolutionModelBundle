@@ -8,40 +8,41 @@ class Doctrine1Service {
 
 	protected $databaseManager;
 
-	public function __construct(Container $container)
+	public function __construct(Container $container, AutoloadService $autoloadService)
 	{
-		$config = $container->getParameter('theodo_evolution_legacy_model');
+        $config = $container->getParameter('theodo_evolution_legacy_model');
 
-		$path = $config['path'];
-		$user = $config['user'];
-		$password = $config['password'];
-		$host = $config['host'];
-		$dbname = $config['dbname'];
+        $this->doctrineConnection($config);
+        $this->autoloadRepositories($autoloadService);
 
+    }   
 
-		require_once $path;
-		spl_autoload_register(array('Doctrine', 'autoload'));
-		$manager = \Doctrine_Manager::getInstance();
+    public function doctrineConnection($config)
+    {
+        require_once $config['path'];
+        spl_autoload_register(array('Doctrine', 'autoload'));
 
-		// TODO: Make a configuration
-		$db['dsn'] = "mysql://$user:$password@$host/$dbname"; 
-		$conn = \Doctrine_Manager::connection($db['dsn'], 'doctrine');
+        $user = $config['user'];
+        $password = $config['password'];
+        $host = $config['host'];
+        $dbname = $config['dbname'];
 
+        $db['dsn'] = "mysql://$user:$password@$host/$dbname"; 
+        $conn = \Doctrine_Manager::connection($db['dsn'], 'doctrine');
 
-		// TODO: Make a service
-		$autoloadService = new AutoloadService();
+        $manager = \Doctrine_Manager::getInstance();
+    }
 
+    public function autoloadRepositories(AutoloadService $autoloadService)
+    {
+        $autoloadService->register('../legacy/lib/model/doctrine/');
+        $autoloadService->register('../legacy/lib/vendor/symfony/plugins/sfDoctrinePlugin/lib/');
+        $autoloadService->register('../legacy/lib/vendor/symfony/exception/');
 
-		// TODO: Make a configuration
-		$autoloadService->register('../legacy/lib/model/doctrine/');
-		$autoloadService->register('../legacy/lib/vendor/symfony/plugins/sfDoctrinePlugin/lib/');
-		$autoloadService->register('../legacy/lib/vendor/symfony/exception/');
-		$autoloadService->register('../legacy/plugins/sfThumbnailPlugin/lib/');
-		$autoloadService->register('../legacy/plugins/sfThumbnailPlugin/lib/');
-		$autoloadService->register('../legacy/plugins/sfDoctrineThumbnailablePlugin/lib/', 'Doctrine');
-
-
-	}	
+        foreach ($config['autoload'] as $info) {
+            $autoloadService->register($info['path'], $info['prefix']);
+        }        
+    }
 }	
 
 
