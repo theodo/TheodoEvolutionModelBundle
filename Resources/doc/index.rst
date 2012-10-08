@@ -39,7 +39,7 @@ Configuration
         host:       localhost
         dbname:     mydatabase
 
-3. You can add repository to the autoload register if necessary. This is an example to load SfThumbnail plugin. config.yml::
+3. You can add repository to the autoload register if necessary. You can specify 3 parameters: `path` the directory to add to the autoload, `prefix` if the class filename has a prefix and `extension` if the extension is different of `.class.php`. This is a config.yml example to load SfThumbnail plugin::
 
     theodo_evolution_legacy_model:
         autoload:
