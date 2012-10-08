@@ -46,4 +46,12 @@ Configuration
             - { path: '../legacy/plugins/sfThumbnailPlugin/lib/'}
             - { path: '../legacy/plugins/sfDoctrineThumbnailablePlugin/lib/', prefix: 'Doctrine'}  
 
+Use Case
+--------
 
+Now, you can do something like this in your controller::
+
+    $doctrineService = $this->get('theodo_evolution.legacy_model.doctrine1');
+    $doctrine = $doctrineService->getDoctrine();
+    $realisationTable = $doctrine->getTable('Realisation');
+    $realisations = $realisationTable->findAll();
