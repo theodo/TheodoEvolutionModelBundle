@@ -4,8 +4,8 @@ TheodoEvolution: Legacy Model Bundle
 This bundle allows access to the legacy models.
 Available Model :
 
- - Doctrine 1 (Symfony 1.4)
- - That's all for the moment.
+- Doctrine 1 (Symfony 1.4)
+- That's all for the moment.
 
 Prerequisites
 -------------
