@@ -1,8 +1,10 @@
 <?php
 namespace Theodo\Evolution\LegacyModelBundle\Service;
 
-use Theodo\Evolution\LegacyModelBundle\Service\AutoloadService;
 use Symfony\Component\DependencyInjection\Container;
+
+use Theodo\Evolution\LegacyModelBundle\Service\AutoloadService;
+use Theodo\Evolution\LegacyModelBundle\Model\Doctrine\Doctrine;
 
 class Doctrine1Service {
 
@@ -45,6 +47,11 @@ class Doctrine1Service {
             );
             $autoloadService->register($info['path'], $option);
         }        
+    }
+
+    public function getDoctrine ()
+    {
+        return new Doctrine();
     }
 }	
 
