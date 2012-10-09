@@ -35,5 +35,5 @@
     </exec>
   </target>
 
-    <target name="build" depends="clean,prepare,phpunit"/>
+    <target name="build" depends="clean,prepare,phpcs,phpunit"/>
 </project>
