@@ -27,13 +27,14 @@
         </exec>
     </target>
 
-  <target name="phpcs">
-    <exec executable="phpcs">
-        <arg value="--standard=${basedir}/build/phpcs.xml" />
-        <arg value="--ignore=autoload.php" />
-        <arg path="${basedir}/src" />
-    </exec>
-  </target>
+    <target name="phpcs" description="Generate checkstyle.xml using PHP_CodeSniffer">
+        <exec executable="phpcs" output="/dev/null">
+            <arg value="--report=checkstyle"/>
+            <arg value="--report-file=${basedir}/build/logs/checkstyle.xml"/>
+            <arg value="--standard=${basedir}/phpcs.xml"/>
+            <arg path="${source}"/>
+        </exec>
+    </target>
 
     <target name="build" depends="clean,prepare,phpcs,phpunit"/>
 </project>
