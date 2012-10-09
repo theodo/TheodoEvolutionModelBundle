@@ -27,5 +27,13 @@
         </exec>
     </target>
 
+  <target name="phpcs">
+    <exec executable="phpcs">
+        <arg value="--standard=${basedir}/build/phpcs.xml" />
+        <arg value="--ignore=autoload.php" />
+        <arg path="${basedir}/src" />
+    </exec>
+  </target>
+
     <target name="build" depends="clean,prepare,phpunit"/>
 </project>
