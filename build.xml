@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    
+
 <project name="Theodo Evolution Legacy Model Bundle" default="build" basedir=".">
     <target name="clean">
         <delete dir="${basedir}/build"/>
@@ -30,7 +30,7 @@
     </target>
 
     <target name="phpcs" description="Generate checkstyle.xml using PHP_CodeSniffer">
-        <exec executable="phpcs" output="/dev/null">
+        <exec executable="phpcs">
             <arg value="--report=checkstyle"/>
             <arg value="--report-file=${basedir}/build/logs/checkstyle.xml"/>
             <arg value="--standard=${basedir}/phpcs.xml"/>
