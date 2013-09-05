@@ -1,5 +1,5 @@
 {
-    "name": "theodo/evolution-legacy-model-bundle",
+    "name": "theodo-evolution/model-bundle",
     "type": "symfony-bundle",
     "description": "The \"Theodo Evolution Legacy Model\" bundle",
     "keywords": [],
@@ -17,14 +17,14 @@
     },
     "require": {
         "php": ">=5.3.3",
-        "symfony/http-foundation": ">=2.1, <2.3",
-        "symfony/http-kernel": ">=2.1, <2.3",
-        "symfony/config": ">=2.1, <2.3",
-        "symfony/event-dispatcher": ">=2.1, <2.3"
+        "symfony/http-foundation": ">=2.1, <2.4",
+        "symfony/http-kernel": ">=2.1, <2.4",
+        "symfony/config": ">=2.1, <2.4",
+        "symfony/event-dispatcher": ">=2.1, <2.4"
     },
     "require-dev": {
-        "symfony/yaml": ">=2.1, <2.3",
-        "symfony/dependency-injection": ">=2.1, <2.3"
+        "symfony/yaml": ">=2.1, <2.4",
+        "symfony/dependency-injection": ">=2.1, <2.4"
     },
     "minimum-stability": "dev",
     "target-dir": "Theodo/Evolution/LegacyModelBundle"
